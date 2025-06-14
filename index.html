@@ -661,10 +661,88 @@
         <div class="container">
             <h2>Our IoT Products</h2>
             <div class="products-tabs">
-                <button class="tab-btn active" data-tab="all">All Products</button>
-                <button class="tab-btn" data-tab="switches">Smart Switches</button>
-                <button class="tab-btn" data-tab="lights">Neo Lights</button>
-                <button class="tab-btn" data-tab="automation">What's App Automation</button>
+    <button class="tab-btn active" data-tab="all">
+        <i class="fas fa-boxes"></i> All Products
+    </button>
+    <button class="tab-btn" data-tab="switches">
+        <i class="fas fa-toggle-on"></i> Smart Switches
+    </button>
+    <button class="tab-btn" data-tab="lights">
+        <i class="fas fa-lightbulb"></i> Neo Lights
+    </button>
+    <button class="tab-btn" data-tab="automation">
+        <i class="fas fa-robot"></i> Smart Automation
+    </button>
+</div>
+
+<style>
+    .products-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin: 30px 0 40px;
+    }
+    
+    .tab-btn {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 50px;
+        background: #f5f5f5;
+        color: #555;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    .tab-btn i {
+        font-size: 16px;
+    }
+    
+    .tab-btn:hover {
+        background: #e0e0e0;
+        transform: translateY(-2px);
+    }
+    
+    .tab-btn.active {
+        background: linear-gradient(135deg, #0066ff, #00ccff);
+        color: white;
+        box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+    }
+    
+    @media (max-width: 600px) {
+        .products-tabs {
+            gap: 6px;
+        }
+        .tab-btn {
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+    }
+</style>
+
+<script>
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Get tab to show
+            const tabToShow = this.dataset.tab;
+            
+            // Filter products logic would go here
+            console.log(`Showing ${tabToShow} products`);
+        });
+    });
+</script>
             </div>
             <div class="products-grid">
                 <div class="product-card" data-category="switches">
